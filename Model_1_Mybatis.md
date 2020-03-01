@@ -31,6 +31,7 @@
 #4、简述下Mybatis的一级、二级缓存（分别从存储结构、范围、失效场景。三个方面来作答）？
 	1、一级缓存有SqlSession级别的和Statement级别的。SQLSession级别的实现同一个会话中的数据共享。Statement级别的可以理解为只对当前执行的这个Statement有效，执行完后就清空缓存。底层HashMap的键对象根据SQL的ID，参数，SQL本身，分页参数以及JDBC的参数信息构成。执行query方法时，先会在一级缓存中查询，查询不到则会去数据库中查询，查询出来后会存入一级缓存中后返回。在执行update、insert、delete或者close方法后，会清空缓存。Mybatis的一级缓存最大范围是SQLSession内部，有多个SQLSession或者分布式的环境下，数据库读写操作会引起脏数据，建议设定缓存为Statement级别的。
 	2、二级缓存底层也是一个HashMap的数据结构，是SQLSessionFactory级别的，实现不同会话中数据的共享，是一个全局变量。存储作用域为Mapper的namespace级别。当SqlSession执行update、insert、delete操作后，会清空二级缓存。二级缓存需要我们手动开启在mybatis的配置文件配置：<setting name="cacheEnabled" value="true"/> ，在mapper配置文件添加<cache></cache>,并且需要实体对象实现Serializable接口。
+
 #5、简述Mybatis的插件运行原理，以及如何编写一个插件？
 	1、运行原理为：
 		a、在四大对象Excutor、StatementHandler、ParameterHandler、ResultSetHandler创建对象的时候，每个创建出来的对象都不是直接返回的，而是interceptorChain.pluginAll(parameterHandler)获取到所有的interceptor接口，调用interceptor.plugin(target)返回target包装后的对象。
