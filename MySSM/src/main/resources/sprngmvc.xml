@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd
+
+">
+
+    <!--扫描controller-->
+    <context:component-scan base-package="com.haiking.ssm"/>
+
+    <!--配置springmvc注解驱动，自动注册合适的组件handlerMapping和handlerAdapter-->
+    <mvc:annotation-driven/>
+    <!-- 用于简化@Requestmapping注解方法中返回界面； -->
+    <!--InternalResourceViewResolvers 是视图解析器 ，它会将逻辑视图转换成实际的物理视图，做一个转发操作！
+           也就是说具体步骤：prefix +  方法的返回值  + suffix-->
+    <!-- /WEB-INF/views/success.jsp -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/view/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+</beans>
