@@ -23,12 +23,12 @@ public class ResumerController {
 
 
     @RequestMapping("/findAllResume")
-    public ModelAndView findAllResume(@RequestParam Integer pageNum,@RequestParam Integer pageSize) throws Exception {
-        Pageable pageable = PageRequest.of(pageNum,pageSize);
+    public ModelAndView findAllResume(@RequestParam Integer pageNum, @RequestParam Integer pageSize) throws Exception {
+        Pageable pageable = PageRequest.of(pageNum, pageSize);
         Page<Resume> resumes = resumeService.findAllResume(pageable);
         ModelAndView mv = new ModelAndView();
         mv.setViewName("listresume");
-        mv.addObject("resumes",resumes);
-        return  mv;
+        mv.addObject("resumes", resumes);
+        return mv;
     }
 }

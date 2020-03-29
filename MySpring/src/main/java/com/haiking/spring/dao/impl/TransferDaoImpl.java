@@ -13,16 +13,16 @@ import com.haiking.spring.vo.Account;
 
 @MyService
 public class TransferDaoImpl implements TransferDao {
-	@MyAutowired
+    @MyAutowired
     private JdbcTemplate jdbcTemplate;
-	
-	public int transferMoneyByCardNo(Account account) {
-		String sql = "update account set money=? where cardNo=?";
-        return jdbcTemplate.update(sql,account.getMoney(),account.getCardNo());
-	}
 
-	public Account queryAccountByCardNo(String cardNo) throws Exception {
-		String sql = "select * from account where cardNo=?";
+    public int transferMoneyByCardNo(Account account) {
+        String sql = "update account set money=? where cardNo=?";
+        return jdbcTemplate.update(sql, account.getMoney(), account.getCardNo());
+    }
+
+    public Account queryAccountByCardNo(String cardNo) throws Exception {
+        String sql = "select * from account where cardNo=?";
         return jdbcTemplate.queryForObject(sql, new RowMapper<Account>() {
             public Account mapRow(ResultSet resultSet, int i) throws SQLException {
                 Account account = new Account();
@@ -32,5 +32,5 @@ public class TransferDaoImpl implements TransferDao {
                 return account;
             }
         }, cardNo);
-	}
+    }
 }

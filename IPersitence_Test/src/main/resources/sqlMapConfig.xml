@@ -1,8 +1,8 @@
 <configuration>
-	<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
-	<property name="jdbcUrl" value="jdbc:mysql:///test"></property>
-	<property name="username" value="root"></property>
-	<property name="password" value="root"></property>
-	
-	<mappers resources= "/UserMapper.xml"></mappers>
+    <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+    <property name="jdbcUrl" value="jdbc:mysql:///test"></property>
+    <property name="username" value="root"></property>
+    <property name="password" value="root"></property>
+
+    <mappers resources="/UserMapper.xml"></mappers>
 </configuration>

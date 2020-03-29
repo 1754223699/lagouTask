@@ -13,12 +13,12 @@ import com.haiking.mvc.service.IDemoService;
 @KingRequestMapping("/demo")
 public class DemoController {
 
-	@KingAutowired
-	private IDemoService demoService;
+    @KingAutowired
+    private IDemoService demoService;
 
-	@Security({"zhangsan","lisi"})
-	@KingRequestMapping("/query")
-	public String query(HttpServletRequest request,HttpServletResponse response ,String name){
-		return demoService.get(name);
-	}
+    @Security({"zhangsan", "lisi"})
+    @KingRequestMapping("/query")
+    public String query(HttpServletRequest request, HttpServletResponse response, String name) {
+        return demoService.get(name);
+    }
 }

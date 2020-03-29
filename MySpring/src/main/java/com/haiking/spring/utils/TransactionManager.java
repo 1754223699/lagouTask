@@ -8,8 +8,8 @@ import com.haiking.spring.annotation.MyAutowired;
 
 @Component("transactionManager")
 public class TransactionManager {
-	
-	@MyAutowired
+
+    @MyAutowired
     private ConnectionUtils connectionUtils;
 
     // 开启手动事务控制

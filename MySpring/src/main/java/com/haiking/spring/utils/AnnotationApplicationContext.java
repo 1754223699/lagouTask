@@ -13,21 +13,26 @@ import com.haiking.spring.annotation.MyService;
 import com.haiking.spring.utils.IocUtils;
 
 public class AnnotationApplicationContext {
-	private String packageName;
-    /**保存有Service注解的类*/
+    private String packageName;
+    /**
+     * 保存有Service注解的类
+     */
     private ConcurrentHashMap<String, Object> beans = null;
- 
-    public AnnotationApplicationContext (String packageName) throws InstantiationException, IllegalAccessException {
+
+    public AnnotationApplicationContext(String packageName) throws InstantiationException, IllegalAccessException {
         this.packageName = packageName;
         initBeans();
         //在所有Bean容器里所有bean自动注入所有的Bean
         for (Map.Entry<String, Object> entry : beans.entrySet()) {
-            System.out.println("beanId:"+entry.getKey());
+            System.out.println("beanId:" + entry.getKey());
             Object bean = entry.getValue();
             attrAssign(bean);
         }
     }
-    /**初始化Bean容器*/
+
+    /**
+     * 初始化Bean容器
+     */
     private void initBeans() throws IllegalAccessException, InstantiationException {
         beans = new ConcurrentHashMap<String, Object>();
         //使用扫包工具获得包下所有的类
@@ -38,10 +43,12 @@ public class AnnotationApplicationContext {
             throw new RuntimeException("没有类加上了注解");
         }
     }
- 
-    /**扫包，把有注解的类加入到bean容器里*/
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-	private void findClassExistAnnotation(List<Class<?>> classes) throws InstantiationException, IllegalAccessException {
+
+    /**
+     * 扫包，把有注解的类加入到bean容器里
+     */
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    private void findClassExistAnnotation(List<Class<?>> classes) throws InstantiationException, IllegalAccessException {
         for (Class classInfo : classes) {
             //判断是否有注解
             Annotation annotation = classInfo.getAnnotation(MyService.class);
@@ -51,30 +58,38 @@ public class AnnotationApplicationContext {
             }
         }
     }
- 
-    /**类名的首字母小写*/
+
+    /**
+     * 类名的首字母小写
+     */
     private String toLowerCaseFirestOne(String className) {
         return new StringBuilder().append(Character.toLowerCase(className.charAt(0))).append(className.substring(1)).toString();
     }
- 
-    /**获取Bean的方法*/
+
+    /**
+     * 获取Bean的方法
+     */
     public Object getBean(String beanId) throws IllegalAccessException, InstantiationException {
         if (StringUtils.isEmpty(beanId)) {
             throw new RuntimeException("BeanID为空");
         }
         return beans.get(beanId);
     }
- 
-    /**利用反射机制创建Bean*/
+
+    /**
+     * 利用反射机制创建Bean
+     */
     @SuppressWarnings("rawtypes")
-	private Object newInstance(Class classInfo) throws IllegalAccessException, InstantiationException {
+    private Object newInstance(Class classInfo) throws IllegalAccessException, InstantiationException {
         if (classInfo == null) {
             throw new RuntimeException("没有这个ID的bean");
         }
         return classInfo.newInstance();
     }
- 
-    /**自动注入注入这个对象的属性*/
+
+    /**
+     * 自动注入注入这个对象的属性
+     */
     private void attrAssign(Object object) throws IllegalAccessException {
         //获取这个类所有的属性
         Field[] fields = object.getClass().getDeclaredFields();
@@ -91,9 +106,9 @@ public class AnnotationApplicationContext {
                     throw new RuntimeException("注入\"" + fieldName + "\"属性失败，bean容器里没有这个对象");
                 }
                 //第一个参数是这个属性所在的对象
-                field.set(object,target);
+                field.set(object, target);
             }
         }
- 
+
     }
 }

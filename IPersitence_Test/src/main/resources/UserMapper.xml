@@ -1,21 +1,21 @@
 <mapper namespace="User">
-	<select id="selectOne" parameterType="com.lagou.vo.User" resultType="com.lagou.vo.User">
-		SELECT * FROM USER where id = #{id} and userName = #{userName}
-	</select>
-	
-	<select id="selectAll" resultType="com.lagou.vo.User">
-		SELECT * FROM USER;
-	</select>
-	
-	<delete id="deleteOne" parameterType="com.lagou.vo.User" resultType="java.lang.Integer">
-		delete  from user where id =#{id} and userName = #{userName}
-	</delete>
-		
-	<insert id="insertOne" parameterType="com.lagou.vo.User" resultType="java.lang.Integer" >
-		INSERT INTO USER(id,userName,passWord,realName) VALUES(#{id},#{userName},#{passWord},#{realName})
-	</insert>
-	
-	<update id="updateOne" parameterType="com.lagou.vo.User" resultType="java.lang.Integer">
-		update user set userName =#{userName} where id = #{id}
-	</update>
+    <select id="selectOne" parameterType="com.lagou.vo.User" resultType="com.lagou.vo.User">
+        SELECT * FROM USER where id = #{id} and userName = #{userName}
+    </select>
+
+    <select id="selectAll" resultType="com.lagou.vo.User">
+        SELECT * FROM USER;
+    </select>
+
+    <delete id="deleteOne" parameterType="com.lagou.vo.User" resultType="java.lang.Integer">
+        delete from user where id =#{id} and userName = #{userName}
+    </delete>
+
+    <insert id="insertOne" parameterType="com.lagou.vo.User" resultType="java.lang.Integer">
+        INSERT INTO USER(id,userName,passWord,realName) VALUES(#{id},#{userName},#{passWord},#{realName})
+    </insert>
+
+    <update id="updateOne" parameterType="com.lagou.vo.User" resultType="java.lang.Integer">
+        update user set userName =#{userName} where id = #{id}
+    </update>
 </mapper>

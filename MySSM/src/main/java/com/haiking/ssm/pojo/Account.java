@@ -1,10 +1,10 @@
 package com.haiking.ssm.pojo;
 
 public class Account {
-    private  int id;
-    private  String name;
-    private  String cardNo;
-    private  Double money;
+    private int id;
+    private String name;
+    private String cardNo;
+    private Double money;
 
     public int getId() {
         return id;

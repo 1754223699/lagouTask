@@ -1,6 +1,6 @@
 package com.haiking.mvc.service;
 
 public interface IDemoService {
-	String get(String name);
+    String get(String name);
 
 }

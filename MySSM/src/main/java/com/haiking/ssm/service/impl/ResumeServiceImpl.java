@@ -9,13 +9,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class ResumeServiceImpl implements ResumeService {
 
     @Autowired
     private ResumeDao resumeDao;
+
     @Override
     public Page<Resume> findAllResume(Pageable pageable) throws Exception {
-        return resumeDao.findAll( pageable);
+        return resumeDao.findAll(pageable);
     }
 }

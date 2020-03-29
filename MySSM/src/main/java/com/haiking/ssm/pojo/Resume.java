@@ -8,13 +8,13 @@ public class Resume {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private  Long id;
+    private Long id;
     @Column(name = "name")
-    private  String name;
+    private String name;
     @Column(name = "address")
-    private  String address;
+    private String address;
     @Column(name = "phone")
-    private  String phone;
+    private String phone;
 
     public long getId() {
         return id;

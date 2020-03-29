@@ -10,21 +10,21 @@ import com.haiking.spring.vo.Account;
 @MyService
 public class TransferServiceImpl implements TransferService {
 
-	@MyAutowired
+    @MyAutowired
     private TransferDao transferDao;
 
-	@MyTransational
+    @MyTransational
     public void transfer(String fromCardNo, String toCardNo, Double money) throws Exception {
 
-            Account from = transferDao.queryAccountByCardNo(fromCardNo);
-            Account to = transferDao.queryAccountByCardNo(toCardNo);
+        Account from = transferDao.queryAccountByCardNo(fromCardNo);
+        Account to = transferDao.queryAccountByCardNo(toCardNo);
 
-            from.setMoney(from.getMoney()-money);
-            to.setMoney(to.getMoney()+money);
+        from.setMoney(from.getMoney() - money);
+        to.setMoney(to.getMoney() + money);
 
-            transferDao.transferMoneyByCardNo(to);
-            int c = 1/0;
-            transferDao.transferMoneyByCardNo(from);
+        transferDao.transferMoneyByCardNo(to);
+        int c = 1 / 0;
+        transferDao.transferMoneyByCardNo(from);
 
 
     }

@@ -43,7 +43,7 @@
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"></bean>
         </property>
         <!--配置具体provider，hibearnte框架的执⾏细节-->
-        <property name="jpaVendorAdapter" >
+        <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
                 <!--定义hibernate框架的⼀些细节-->
                 <!--
@@ -78,7 +78,7 @@
     </bean>
     <!--3、引⽤上⾯创建的entityManagerFactory<jpa:repositories> 配置jpa的dao层细节base-package:指定dao层接⼝所在包-->
     <jpa:repositories base-package="com.haiking.ssm.dao" entity-manager-factory-ref="entityManagerFactory"
-    transaction-manager-ref="transactionManager"/>
+                      transaction-manager-ref="transactionManager"/>
 
     <context:component-scan base-package="com.haiking.ssm"/>
 </beans>

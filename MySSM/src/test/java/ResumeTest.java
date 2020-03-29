@@ -16,7 +16,7 @@ public class ResumeTest {
     private ResumeDao resumeDao;
 
     @Test
-    public void findById(){
+    public void findById() {
         Resume resume = new Resume();
         resume.setId(1L);
         Optional<Resume> resumeDaoById = resumeDao.findById(1L);

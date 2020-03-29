@@ -14,14 +14,15 @@ public class MybatisSpringTest {
 
     @Autowired
     private AccountService accountService;
+
     @Test
-    public void test1(){
-        try{
-        List<Account> accountList = accountService.queryAccountList();
-        for(Account account :accountList){
-            System.out.println(account);
-        }
-        } catch (Exception e){
+    public void test1() {
+        try {
+            List<Account> accountList = accountService.queryAccountList();
+            for (Account account : accountList) {
+                System.out.println(account);
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
