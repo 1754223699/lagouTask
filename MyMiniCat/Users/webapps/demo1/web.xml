@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<web-app>
+    <servlet>
+        <servlet-name>haikingServlet</servlet-name>
+        <servlet-class>com.haiking.servlet.HaikingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>haikingServlet</servlet-name>
+        <url-pattern>/haiking</url-pattern>
+    </servlet-mapping>
+</web-app>
